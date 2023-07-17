@@ -1,0 +1,21 @@
+{
+    "files.eol": "\n",
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll": true
+        }
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+        "source.fixAll": true
+      }
+    },
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["--line-length=128"],
+    "ruff.args": ["--line-length=128"],
+    "python.languageServer": "Pylance",
+    "prettier.embeddedLanguageFormatting": "off"
+}

@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "boto3typed.boto3-ide",
+        "ms-python.black-formatter",
+        "charliermarsh.ruff",
+        "esbenp.prettier-vscode",
+        "amazonwebservices.aws-toolkit-vscode"
+    ]
+}
