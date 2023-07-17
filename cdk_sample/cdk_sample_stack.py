@@ -2,7 +2,8 @@ from aws_cdk import Stack
 from constructs import Construct
 from .cdk_aurora import CdkAurora  # noqa: F401
 from .cdk_sqs import CdkSqs  # noqa: F401
-from .cdk_event_bridge_schedule import CdkEventBridgeSchedule  # noqa: F401
+from .cdk_event_bridge_schedule_invoke_lambda import CdkEventBridgeSchedule  # noqa: F401
+from .cdk_event_bridge_rule_invoke_lambda_use_schedule import CdkEventBridgeRule  # noqa: F401
 
 
 class CdkSampleStack(Stack):
@@ -16,4 +17,7 @@ class CdkSampleStack(Stack):
         sqs.CreateSQSPolicyFromJson(self)
 
         ebsche = CdkEventBridgeSchedule()
-        ebsche.CreateEventBridgeSchedule(self)
+        ebsche.CreateEventBridgeScheduleInvokeLambda(self)
+
+        ebrule = CdkEventBridgeRule()
+        ebrule.CreateEventBridgeRuleInvokeLambdaUseSchedule(self)

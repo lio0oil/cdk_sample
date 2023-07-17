@@ -5,7 +5,7 @@ from aws_cdk import ScopedAws
 
 
 class CdkEventBridgeSchedule:
-    def CreateEventBridgeSchedule(self, scope: Construct):
+    def CreateEventBridgeScheduleInvokeLambda(self, scope: Construct):
         # no official hand-written (L2) constructs
 
         # every 30 minutes
@@ -28,7 +28,10 @@ class CdkEventBridgeSchedule:
         )
 
         principal: iam.ServicePrincipal = iam.ServicePrincipal("lambda.amazonaws.com")
-        principal_with_conditions = iam.PrincipalWithConditions(principal, {"StringEquals": {"aws:SourceAccount": sa.account_id}})
+        principal_with_conditions = iam.PrincipalWithConditions(
+            principal,
+            {"StringEquals": {"aws:SourceAccount": sa.account_id}},
+        )
 
         role: iam.Role = iam.Role(
             scope,
