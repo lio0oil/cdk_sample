@@ -1,7 +1,8 @@
 from aws_cdk import Stack
 from constructs import Construct
-from .cdk_aurora import CdkAurora
-from .cdk_sqs import CdkSqs
+from .cdk_aurora import CdkAurora  # noqa: F401
+from .cdk_sqs import CdkSqs  # noqa: F401
+from .cdk_event_bridge_schedule import CdkEventBridgeSchedule  # noqa: F401
 
 
 class CdkSampleStack(Stack):
@@ -13,3 +14,6 @@ class CdkSampleStack(Stack):
 
         sqs = CdkSqs()
         sqs.CreateSQSPolicyFromJson(self)
+
+        ebsche = CdkEventBridgeSchedule()
+        ebsche.CreateEventBridgeSchedule(self)
