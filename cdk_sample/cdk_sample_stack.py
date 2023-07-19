@@ -11,17 +11,17 @@ class CdkSampleStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        # aurora = CdkAurora()
-        # aurora.CreateAuroraInstanceWithTag(self)
+        aurora = CdkAurora()
+        aurora.CreateAuroraInstanceWithTag(self)
 
-        # sqs = CdkSqs()
-        # sqs.CreateSQSPolicyFromJson(self)
+        sqs = CdkSqs()
+        sqs.CreateSQSPolicyFromJson(self)
 
-        # ebsche = CdkEventBridgeSchedule()
-        # ebsche.CreateEventBridgeScheduleInvokeLambda(self)
+        ebsche = CdkEventBridgeSchedule()
+        ebsche.CreateEventBridgeScheduleInvokeLambda(self)
 
-        # ebrule = CdkEventBridgeRule()
-        # ebrule.CreateEventBridgeRuleInvokeLambdaUseSchedule(self)
+        ebrule = CdkEventBridgeRule()
+        ebrule.CreateEventBridgeRuleInvokeLambdaUseSchedule(self)
 
         sfn = CdkStepFunctions()
         sfn.CreateStepFunctionsFromASL(self)
