@@ -27,7 +27,7 @@ class CdkEventBridgeSchedule:
             ],
         )
 
-        principal: iam.ServicePrincipal = iam.ServicePrincipal("lambda.amazonaws.com")
+        principal: iam.ServicePrincipal = iam.ServicePrincipal("scheduler.amazonaws.com")
         principal_with_conditions = iam.PrincipalWithConditions(
             principal,
             {"StringEquals": {"aws:SourceAccount": sa.account_id}},
