@@ -8,4 +8,4 @@
 - EventBridge Schedule Invoke Lambda
 - EventBridge Rule Invoke Lambda Use Schedule
 - StepFunctions From ASL
-- AutoScaling with StepScalingPolicy SQS own metric
+- AutoScaling with StepScalingPolicy for SQS own metric
