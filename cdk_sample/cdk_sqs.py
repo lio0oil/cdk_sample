@@ -15,7 +15,7 @@ class CdkSqs:
             effect=iam.Effect.ALLOW,
             actions=["SQS:2*"],
             principals=[iam.ArnPrincipal("*")],
-            resources=["arn:aws:sqs:ap-northeast-1:000000000000:dlq"],
+            resources=["arn:aws:sqs:xxx-xxxxx-1:000000000000:dlq"],
         )
         s.add_to_resource_policy(sqs_policy_state2)
 
@@ -28,7 +28,7 @@ class CdkSqs:
     "AWS": "arn:aws:iam::000000000000:root"
     },
     "Action": "SQS:1",
-    "Resource": "arn:aws:sqs:ap-northeast-1:000000000000:dlq"
+    "Resource": "arn:aws:sqs:xxx-xxxxx-1:000000000000:dlq"
 }
 """  # noqa: F841
 
@@ -49,7 +49,7 @@ class CdkSqs:
         "AWS": "arn:aws:iam::000000000000:root"
       },
       "Action": "SQS:3*",
-      "Resource": "arn:aws:sqs:ap-northeast-1:000000000000:dlq"
+      "Resource": "arn:aws:sqs:xxx-xxxxx-1:000000000000:dlq"
     }
   ]
 }"""  # noqa: F841
