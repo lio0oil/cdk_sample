@@ -9,3 +9,5 @@
 - EventBridge Rule Invoke Lambda Use Schedule
 - StepFunctions From ASL
 - AutoScaling with StepScalingPolicy for SQS own metric
+- IAM Role with customer managed policies
+  

@@ -6,6 +6,7 @@ from .cdk_event_bridge_schedule import CdkEventBridgeSchedule  # noqa: F401
 from .cdk_event_bridge_rule import CdkEventBridgeRule  # noqa: F401
 from .cdk_step_functions import CdkStepFunctions  # noqa: F401
 from .cdk_auto_scaling import CdkAutoScaling  # noqa: F401
+from .cdk_iam_role import CdkIAMRole  # noqa: F401
 
 
 class CdkSampleStack(Stack):
@@ -18,8 +19,8 @@ class CdkSampleStack(Stack):
         # sqs = CdkSqs()
         # sqs.CreateSQSPolicyFromJson(self)
 
-        # ebsche = CdkEventBridgeSchedule()
-        # ebsche.CreateEventBridgeScheduleInvokeLambda(self)
+        ebsche = CdkEventBridgeSchedule()
+        ebsche.CreateEventBridgeScheduleInvokeLambda(self)
 
         # ebrule = CdkEventBridgeRule()
         # ebrule.CreateEventBridgeRuleInvokeLambdaUseSchedule(self)
@@ -27,5 +28,8 @@ class CdkSampleStack(Stack):
         # sfn = CdkStepFunctions()
         # sfn.CreateStepFunctionsFromASL(self)
 
-        asc = CdkAutoScaling()
-        asc.CreateAutoScaling(self)
+        # asc = CdkAutoScaling()
+        # asc.CreateAutoScaling(self)
+
+        role = CdkIAMRole()
+        role.CreateIAMRole(self)

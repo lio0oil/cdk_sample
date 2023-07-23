@@ -1,5 +1,6 @@
 from aws_cdk import aws_scheduler as sch
 from aws_cdk import aws_iam as iam
+from aws_cdk import aws_lambda as lambda_
 from constructs import Construct
 from aws_cdk import ScopedAws
 
@@ -9,19 +10,27 @@ class CdkEventBridgeSchedule:
         # no official hand-written (L2) constructs
 
         # every 30 minutes
+
+        fn: lambda_.Function = lambda_.Function(
+            scope,
+            "Func_" + "CreateEventBridgeScheduleInvokeLambda",
+            runtime=lambda_.Runtime.NODEJS_14_X,
+            handler="index.handler",
+            code=lambda_.Code.from_inline("exports.handler = handler.toString()"),
+        )
+
         sa: ScopedAws = ScopedAws(scope)
 
-        policy: iam.Policy = iam.Policy(
+        policy: iam.ManagedPolicy = iam.ManagedPolicy(
             scope,
             "Policy",
-            policy_name="Amazon-EventBridge-Scheduler-Execution-Policy",
+            managed_policy_name="Amazon-EventBridge-Scheduler-Execution-Policy",
             statements=[
                 iam.PolicyStatement(
                     actions=["lambda:InvokeFunction"],
                     resources=[
-                        # Get arn if lambda is also at the same time
-                        "arn:aws:lambda:" + sa.region + ":" + sa.account_id + ":function:EventBridgeInvoke:*",
-                        "arn:aws:lambda:" + sa.region + ":" + sa.account_id + ":function:EventBridgeInvoke",
+                        fn.function_arn + ":*",
+                        fn.function_arn,
                     ],
                 )
             ],
@@ -35,14 +44,14 @@ class CdkEventBridgeSchedule:
 
         role: iam.Role = iam.Role(
             scope,
-            "Role",
+            "EventBridgeRole",
             role_name="Amazon_EventBridge_Scheduler_LAMBDA",
             assumed_by=principal_with_conditions,
         )
-        role.attach_inline_policy(policy)
+        role.add_managed_policy(policy)
 
         target = sch.CfnSchedule.TargetProperty(
-            arn="arn:aws::" + sa.region + ":" + sa.account_id + ":function:EventBridgeInvoke",
+            arn=fn.function_arn,
             role_arn=role.role_arn,
         )
 

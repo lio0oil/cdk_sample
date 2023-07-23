@@ -10,3 +10,5 @@ __pycache__
 cdk.out
 
 cdk.context.json
+launch.json
+setenv.ps1

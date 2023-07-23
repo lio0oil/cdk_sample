@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import aws_cdk as cdk
-
+import os
 from cdk_sample.cdk_sample_stack import CdkSampleStack
 
 
@@ -19,7 +19,7 @@ CdkSampleStack(
     # want to deploy the stack to. */
     # env=cdk.Environment(account='123456789012', region='us-east-1'),
     # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
-    env=cdk.Environment(account="000000000000", region="xxx-xxxxx-1"),
+    env=cdk.Environment(account=os.getenv("CDK_DEFAULT_ACCOUNT"), region=os.getenv("CDK_DEFAULT_REGION")),
 )
 
 app.synth()
