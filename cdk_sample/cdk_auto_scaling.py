@@ -9,13 +9,24 @@ from aws_cdk import Duration
 class CdkAutoScaling:
     def CreateAutoScaling(self, scope: Construct):
         vpc = ec2.Vpc.from_lookup(scope, "vpc-08f972a0d99b8ef35", vpc_id="vpc-08f972a0d99b8ef35")
-        launch_template = ec2.LaunchTemplate(
+        launch_template: ec2.LaunchTemplate = ec2.LaunchTemplate(
             scope,
             "LaunchTemplate",
-            machine_image=ec2.MachineImage.lookup(name="cdk_ami"),
+            # machine_image=ec2.MachineImage.lookup(name="cdk_ami"),
+            machine_image=ec2.WindowsImage(ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_CORE_BASE),
             security_group=ec2.SecurityGroup.from_lookup_by_id(scope, "sg-0254554c0c4cf7f7b", "sg-0254554c0c4cf7f7b"),
             key_name="customamitest",
-            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.MEDIUM),
+        )
+        launch_template.add_security_group(
+            ec2.SecurityGroup.from_lookup_by_id(scope, "sg-04136651926cb1b73", "sg-04136651926cb1b73"),
+        )
+
+        cfn_launch_template: ec2.CfnLaunchTemplate = launch_template.node.default_child  # type: ignore
+        # cfn_launch_template.ElasticGpuSpecificationProperty(type="eg1.medium")
+        cfn_launch_template.add_override(
+            "Properties.LaunchTemplateData.ElasticGpuSpecifications",
+            [{"Type": "eg1.medium"}],
         )
 
         vpc_subnets = ec2.SubnetSelection(

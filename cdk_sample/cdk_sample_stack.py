@@ -7,7 +7,7 @@ from .cdk_event_bridge_rule import CdkEventBridgeRule  # noqa: F401
 from .cdk_step_functions import CdkStepFunctions  # noqa: F401
 from .cdk_auto_scaling import CdkAutoScaling  # noqa: F401
 from .cdk_iam_role import CdkIAMRole  # noqa: F401
-from .cdk_conv_str_to_instance_class import CdkConvStrToInstanceClass
+from .cdk_conv_str_to_instance_class import CdkConvStrToInstanceClass  # noqa: F401
 
 
 class CdkSampleStack(Stack):
@@ -29,11 +29,11 @@ class CdkSampleStack(Stack):
         # sfn = CdkStepFunctions()
         # sfn.CreateStepFunctionsFromASL(self)
 
-        # asc = CdkAutoScaling()
-        # asc.CreateAutoScaling(self)
+        asc = CdkAutoScaling()
+        asc.CreateAutoScaling(self)
 
         # role = CdkIAMRole()
         # role.CreateIAMRole(self)
 
-        csi = CdkConvStrToInstanceClass()
-        csi.CreateEc2(self)
+        # csi = CdkConvStrToInstanceClass()
+        # csi.CreateEc2(self)
