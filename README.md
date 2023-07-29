@@ -11,4 +11,4 @@
 - AutoScaling with StepScalingPolicy for SQS own metric
 - AutoScaling with Elastic Graphics
 - IAM Role with customer managed policies
-  
+- Security Group
