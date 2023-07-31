@@ -12,3 +12,4 @@
 - AutoScaling with Elastic Graphics
 - IAM Role with customer managed policies
 - Security Group
+- DynamoDB from S3
