@@ -10,6 +10,7 @@ from .cdk_iam_role import CdkIAMRole  # noqa: F401
 from .cdk_conv_str_to_instance_class import CdkConvStrToInstanceClass  # noqa: F401
 from .cdk_security_group import CdkSecurityGroup  # noqa: F401
 from .cdk_dynamo_db import CdkDynamoDB  # noqa: F401
+from .cdk_ec2_from_launch_template import CdkEc2  # noqa: F401
 
 
 class CdkSampleStack(Stack):
@@ -43,5 +44,8 @@ class CdkSampleStack(Stack):
         # sg = CdkSecurityGroup()
         # sg.CreateSecurityGgroup(self)
 
-        ddb = CdkDynamoDB()
-        ddb.CreateDynamoDBfromS3(self)
+        # ddb = CdkDynamoDB()
+        # ddb.CreateDynamoDBfromS3(self)
+
+        ec2 = CdkEc2()
+        ec2.CreateEc2FromLaunchTemplate(self)

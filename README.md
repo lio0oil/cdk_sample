@@ -13,3 +13,4 @@
 - IAM Role with customer managed policies
 - Security Group
 - DynamoDB from S3
+- EC2 from LaunchTemplate
