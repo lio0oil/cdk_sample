@@ -1,21 +1,22 @@
 {
     "files.eol": "\n",
     "[python]": {
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-          "source.fixAll": true
-        }
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+      },
+      "editor.defaultFormatter": "charliermarsh.ruff"
     },
     "[json]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
       "editor.formatOnSave": true,
       "editor.codeActionsOnSave": {
-        "source.fixAll": true
+        "source.fixAll": "explicit"
       }
     },
-    "python.formatting.provider": "black",
-    "python.formatting.blackArgs": ["--line-length=128"],
-    "ruff.args": ["--line-length=128"],
+    "ruff.lint.args": [],
+    "ruff.format.args": ["--line-length=128"],
     "python.languageServer": "Pylance",
-    "prettier.embeddedLanguageFormatting": "off"
+    "prettier.embeddedLanguageFormatting": "off",
 }
