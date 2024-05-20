@@ -17,11 +17,7 @@
       "request": "launch",
       "program": "${workspaceFolder}/app.py",
       "console": "integratedTerminal",
-      "justMyCode": true,
-      "env": {
-        "CDK_DEFAULT_ACCOUNT": "836529485854",
-        "CDK_DEFAULT_REGION": "ap-northeast-1"
-      }
+      "justMyCode": true
     }
   ]
 }
