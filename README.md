@@ -15,3 +15,14 @@
 - DynamoDB from S3
 - EC2 from LaunchTemplate
 - SSM Change Calndar
+
+## Deploy
+
+```bash
+# single stacks
+cdk deploy MyStack
+# multiple stacks
+cdk deploy Stack1 Stack2
+# all stacks
+cdk deploy "*"    
+```
