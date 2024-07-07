@@ -7,7 +7,7 @@ class ChangeCalender(Construct):
     def changecalender(self) -> ssm.CfnDocument:
         return self._changecalender
 
-    def __init__(self, scope: Construct, id: str, *, content: str, **kwargs):
+    def __init__(self, scope: Construct, id: str, content: str, **kwargs):
         super().__init__(scope, id, **kwargs)
         self.__content = content
 
