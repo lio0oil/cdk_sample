@@ -38,6 +38,7 @@ class StepFunctionsFromASL(Construct):
         with open(file) as f:
             data = f.read()
 
+        # Use CloudFormation pseudo parameters to replace
         data = data.replace("${AWS::Region}", Aws.REGION)
         data = data.replace("${AWS::AccountId}", Aws.ACCOUNT_ID)
 
