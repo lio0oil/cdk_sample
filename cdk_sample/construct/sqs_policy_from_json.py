@@ -5,12 +5,16 @@ from aws_cdk import aws_sqs as sqs
 from constructs import Construct
 
 
-class SQSQueuePolicyFromJson(Construct):
+class SQSPolicyFromJson(Construct):
+    @property
+    def sqs(self) -> sqs.IQueue:
+        return self._mysqs
+
     def __init__(self, scope: Construct, id: str, **kwargs):
         super().__init__(scope, id, **kwargs)
 
         # SQS Policy from json
-        s = sqs.Queue(scope, "SampleSQS")  # noqa: F841
+        mysqs = sqs.Queue(scope, "SampleSQS")  # noqa: F841
 
         # CDKから作成
         sqs_policy_state2 = iam.PolicyStatement(
@@ -19,7 +23,7 @@ class SQSQueuePolicyFromJson(Construct):
             principals=[iam.ArnPrincipal("*")],  # type: ignore
             resources=["arn:aws:sqs:xxx-xxxxx-1:000000000000:dlq"],
         )
-        s.add_to_resource_policy(sqs_policy_state2)
+        mysqs.add_to_resource_policy(sqs_policy_state2)
 
         # jsonから作成
         policy1 = """
@@ -35,7 +39,7 @@ class SQSQueuePolicyFromJson(Construct):
 """
         # PolicyStatementなので1ステートメントしか扱えない
         sqs_policy_state1 = iam.PolicyStatement.from_json(json.loads(policy1))
-        s.add_to_resource_policy(sqs_policy_state1)
+        mysqs.add_to_resource_policy(sqs_policy_state1)
 
         # 既存のSQSの設定から作成したい場合はStatementでループさせる
         policy3 = """
@@ -58,4 +62,6 @@ class SQSQueuePolicyFromJson(Construct):
         j = json.loads(policy3)
 
         for stat in j["Statement"]:
-            s.add_to_resource_policy(iam.PolicyStatement.from_json(stat))
+            mysqs.add_to_resource_policy(iam.PolicyStatement.from_json(stat))
+
+        self._mysqs = mysqs
