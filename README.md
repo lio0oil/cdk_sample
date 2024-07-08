@@ -4,7 +4,7 @@
 ## List
 
 - Aurora instance with tag
-- SQS Policy from json
+- SQS QueuePolicy from json
 - EventBridge Schedule Invoke Lambda
 - EventBridge Rule Invoke Lambda Use Schedule
 - StepFunctions From ASL

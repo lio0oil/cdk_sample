@@ -1,20 +1,22 @@
-from aws_cdk import aws_sqs as sqs
-from aws_cdk import aws_iam as iam
-from constructs import Construct
-
 import json  # noqa: F401
 
+from aws_cdk import aws_iam as iam
+from aws_cdk import aws_sqs as sqs
+from constructs import Construct
 
-class CdkSqs:
-    def CreateSQSPolicyFromJson(self, scope: Construct):
+
+class SQSQueuePolicyFromJson(Construct):
+    def __init__(self, scope: Construct, id: str, **kwargs):
+        super().__init__(scope, id, **kwargs)
+
         # SQS Policy from json
-        s = sqs.Queue(scope, "sqs")  # noqa: F841
+        s = sqs.Queue(scope, "SampleSQS")  # noqa: F841
 
         # CDKから作成
         sqs_policy_state2 = iam.PolicyStatement(
             effect=iam.Effect.ALLOW,
             actions=["SQS:2*"],
-            principals=[iam.ArnPrincipal("*")],
+            principals=[iam.ArnPrincipal("*")],  # type: ignore
             resources=["arn:aws:sqs:xxx-xxxxx-1:000000000000:dlq"],
         )
         s.add_to_resource_policy(sqs_policy_state2)
@@ -30,8 +32,7 @@ class CdkSqs:
     "Action": "SQS:1",
     "Resource": "arn:aws:sqs:xxx-xxxxx-1:000000000000:dlq"
 }
-"""  # noqa: F841
-
+"""
         # PolicyStatementなので1ステートメントしか扱えない
         sqs_policy_state1 = iam.PolicyStatement.from_json(json.loads(policy1))
         s.add_to_resource_policy(sqs_policy_state1)
@@ -52,7 +53,7 @@ class CdkSqs:
       "Resource": "arn:aws:sqs:xxx-xxxxx-1:000000000000:dlq"
     }
   ]
-}"""  # noqa: F841
+}"""
 
         j = json.loads(policy3)
 
