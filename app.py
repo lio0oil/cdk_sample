@@ -12,10 +12,10 @@ from cdk_sample.stack.step_functions_from_asl_stack import StepFunctionsFromASLS
 
 app = cdk.App()
 env = cdk.Environment(account=os.getenv("CDK_DEFAULT_ACCOUNT"), region=os.getenv("CDK_DEFAULT_REGION"))
-ChangeCalenderStack(app, "ChangeCalenderStack", env=env)
-StepFunctionsFromASLStack(app, "StepFunctionsFromASLStack", env=env)
-SQSPolicyFromJsonStack(app, "SQSQueuePolicyFromJsonStack", env=env)
-AuroraTagEachInstanceStack(app, "AuroraTagEachInstanceStack", env=env)
+ChangeCalenderStack(app, "ChangeCalender", env=env)
+StepFunctionsFromASLStack(app, "StepFunctionsFromASL", env=env)
+SQSPolicyFromJsonStack(app, "SQSPolicyFromJson", env=env)
+AuroraTagEachInstanceStack(app, "AuroraTagEachInstance", env=env)
 DynamoDBfromS3Stack(app, "DynamoDBfromS3", env=env)
 
 app.synth()

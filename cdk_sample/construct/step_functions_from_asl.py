@@ -9,7 +9,7 @@ from constructs import Construct
 class StepFunctionsFromASL(Construct):
     @property
     def state_machine(self) -> sfn.IStateMachine:
-        return self._state_machine  # type: ignore
+        return self._state_machine
 
     @property
     def function(self) -> lambda_.IFunction:
