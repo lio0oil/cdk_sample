@@ -1,0 +1,347 @@
+# serializer version: 1
+# name: test_snapshot
+  dict({
+    'Mappings': dict({
+      'ServiceprincipalMap': dict({
+        'af-south-1': dict({
+          'states': 'states.af-south-1.amazonaws.com',
+        }),
+        'ap-east-1': dict({
+          'states': 'states.ap-east-1.amazonaws.com',
+        }),
+        'ap-northeast-1': dict({
+          'states': 'states.ap-northeast-1.amazonaws.com',
+        }),
+        'ap-northeast-2': dict({
+          'states': 'states.ap-northeast-2.amazonaws.com',
+        }),
+        'ap-northeast-3': dict({
+          'states': 'states.ap-northeast-3.amazonaws.com',
+        }),
+        'ap-south-1': dict({
+          'states': 'states.ap-south-1.amazonaws.com',
+        }),
+        'ap-south-2': dict({
+          'states': 'states.ap-south-2.amazonaws.com',
+        }),
+        'ap-southeast-1': dict({
+          'states': 'states.ap-southeast-1.amazonaws.com',
+        }),
+        'ap-southeast-2': dict({
+          'states': 'states.ap-southeast-2.amazonaws.com',
+        }),
+        'ap-southeast-3': dict({
+          'states': 'states.ap-southeast-3.amazonaws.com',
+        }),
+        'ap-southeast-4': dict({
+          'states': 'states.ap-southeast-4.amazonaws.com',
+        }),
+        'ap-southeast-5': dict({
+          'states': 'states.ap-southeast-5.amazonaws.com',
+        }),
+        'ap-southeast-7': dict({
+          'states': 'states.ap-southeast-7.amazonaws.com',
+        }),
+        'ca-central-1': dict({
+          'states': 'states.ca-central-1.amazonaws.com',
+        }),
+        'ca-west-1': dict({
+          'states': 'states.ca-west-1.amazonaws.com',
+        }),
+        'cn-north-1': dict({
+          'states': 'states.cn-north-1.amazonaws.com',
+        }),
+        'cn-northwest-1': dict({
+          'states': 'states.cn-northwest-1.amazonaws.com',
+        }),
+        'eu-central-1': dict({
+          'states': 'states.eu-central-1.amazonaws.com',
+        }),
+        'eu-central-2': dict({
+          'states': 'states.eu-central-2.amazonaws.com',
+        }),
+        'eu-isoe-west-1': dict({
+          'states': 'states.eu-isoe-west-1.amazonaws.com',
+        }),
+        'eu-north-1': dict({
+          'states': 'states.eu-north-1.amazonaws.com',
+        }),
+        'eu-south-1': dict({
+          'states': 'states.eu-south-1.amazonaws.com',
+        }),
+        'eu-south-2': dict({
+          'states': 'states.eu-south-2.amazonaws.com',
+        }),
+        'eu-west-1': dict({
+          'states': 'states.eu-west-1.amazonaws.com',
+        }),
+        'eu-west-2': dict({
+          'states': 'states.eu-west-2.amazonaws.com',
+        }),
+        'eu-west-3': dict({
+          'states': 'states.eu-west-3.amazonaws.com',
+        }),
+        'il-central-1': dict({
+          'states': 'states.il-central-1.amazonaws.com',
+        }),
+        'me-central-1': dict({
+          'states': 'states.me-central-1.amazonaws.com',
+        }),
+        'me-south-1': dict({
+          'states': 'states.me-south-1.amazonaws.com',
+        }),
+        'mx-central-1': dict({
+          'states': 'states.mx-central-1.amazonaws.com',
+        }),
+        'sa-east-1': dict({
+          'states': 'states.sa-east-1.amazonaws.com',
+        }),
+        'us-east-1': dict({
+          'states': 'states.us-east-1.amazonaws.com',
+        }),
+        'us-east-2': dict({
+          'states': 'states.us-east-2.amazonaws.com',
+        }),
+        'us-gov-east-1': dict({
+          'states': 'states.us-gov-east-1.amazonaws.com',
+        }),
+        'us-gov-west-1': dict({
+          'states': 'states.us-gov-west-1.amazonaws.com',
+        }),
+        'us-iso-east-1': dict({
+          'states': 'states.amazonaws.com',
+        }),
+        'us-iso-west-1': dict({
+          'states': 'states.amazonaws.com',
+        }),
+        'us-isob-east-1': dict({
+          'states': 'states.amazonaws.com',
+        }),
+        'us-west-1': dict({
+          'states': 'states.us-west-1.amazonaws.com',
+        }),
+        'us-west-2': dict({
+          'states': 'states.us-west-2.amazonaws.com',
+        }),
+      }),
+    }),
+    'Parameters': dict({
+      'BootstrapVersion': dict({
+        'Default': '/cdk-bootstrap/hnb659fds/version',
+        'Description': 'Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]',
+        'Type': 'AWS::SSM::Parameter::Value<String>',
+      }),
+    }),
+    'Resources': dict({
+      'SampleMyFunction85FD4A3A': dict({
+        'DependsOn': list([
+          'SampleMyFunctionServiceRole7EDB26C2',
+        ]),
+        'Properties': dict({
+          'Code': dict({
+            'ZipFile': 'foo',
+          }),
+          'Handler': 'index.handler',
+          'Role': dict({
+            'Fn::GetAtt': list([
+              'SampleMyFunctionServiceRole7EDB26C2',
+              'Arn',
+            ]),
+          }),
+          'Runtime': 'nodejs18.x',
+        }),
+        'Type': 'AWS::Lambda::Function',
+      }),
+      'SampleMyFunctionServiceRole7EDB26C2': dict({
+        'Properties': dict({
+          'AssumeRolePolicyDocument': dict({
+            'Statement': list([
+              dict({
+                'Action': 'sts:AssumeRole',
+                'Effect': 'Allow',
+                'Principal': dict({
+                  'Service': 'lambda.amazonaws.com',
+                }),
+              }),
+            ]),
+            'Version': '2012-10-17',
+          }),
+          'ManagedPolicyArns': list([
+            dict({
+              'Fn::Join': list([
+                '',
+                list([
+                  'arn:',
+                  dict({
+                    'Ref': 'AWS::Partition',
+                  }),
+                  ':iam::aws:policy/service-role/AWSLambdaBasicExecutionRole',
+                ]),
+              ]),
+            }),
+          ]),
+        }),
+        'Type': 'AWS::IAM::Role',
+      }),
+      'SampleStateMachine5D4172BA': dict({
+        'DeletionPolicy': 'Delete',
+        'DependsOn': list([
+          'SampleStateMachineRoleDefaultPolicy3AE2E171',
+          'SampleStateMachineRole11C257FB',
+        ]),
+        'Properties': dict({
+          'DefinitionString': dict({
+            'Fn::Join': list([
+              '',
+              list([
+                '''
+                  {
+                    "Comment": "A description of my state machine",
+                    "StartAt": "Lambda Invoke",
+                    "States": {
+                      "Lambda Invoke": {
+                        "Type": "Task",
+                        "Resource": "arn:aws:states:::lambda:invoke.waitForTaskToken",
+                        "OutputPath": "$.Payload",
+                        "Parameters": {
+                          "FunctionName": "arn:aws:lambda:
+                ''',
+                dict({
+                  'Ref': 'AWS::Region',
+                }),
+                ':',
+                dict({
+                  'Ref': 'AWS::AccountId',
+                }),
+                '''
+                  :function:from_step_functions:$LATEST",
+                          "Payload.$": "$"
+                        },
+                        "Retry": [
+                          {
+                            "ErrorEquals": [
+                              "Lambda.ServiceException",
+                              "Lambda.AWSLambdaException",
+                              "Lambda.SdkClientException",
+                              "Lambda.TooManyRequestsException"
+                            ],
+                            "IntervalSeconds": 2,
+                            "MaxAttempts": 6,
+                            "BackoffRate": 2
+                          }
+                        ],
+                        "End": true
+                      }
+                    }
+                  }
+                ''',
+              ]),
+            ]),
+          }),
+          'RoleArn': dict({
+            'Fn::GetAtt': list([
+              'SampleStateMachineRole11C257FB',
+              'Arn',
+            ]),
+          }),
+        }),
+        'Type': 'AWS::StepFunctions::StateMachine',
+        'UpdateReplacePolicy': 'Delete',
+      }),
+      'SampleStateMachineRole11C257FB': dict({
+        'Properties': dict({
+          'AssumeRolePolicyDocument': dict({
+            'Statement': list([
+              dict({
+                'Action': 'sts:AssumeRole',
+                'Effect': 'Allow',
+                'Principal': dict({
+                  'Service': dict({
+                    'Fn::FindInMap': list([
+                      'ServiceprincipalMap',
+                      dict({
+                        'Ref': 'AWS::Region',
+                      }),
+                      'states',
+                    ]),
+                  }),
+                }),
+              }),
+            ]),
+            'Version': '2012-10-17',
+          }),
+        }),
+        'Type': 'AWS::IAM::Role',
+      }),
+      'SampleStateMachineRoleDefaultPolicy3AE2E171': dict({
+        'Properties': dict({
+          'PolicyDocument': dict({
+            'Statement': list([
+              dict({
+                'Action': 'lambda:InvokeFunction',
+                'Effect': 'Allow',
+                'Resource': list([
+                  dict({
+                    'Fn::GetAtt': list([
+                      'SampleMyFunction85FD4A3A',
+                      'Arn',
+                    ]),
+                  }),
+                  dict({
+                    'Fn::Join': list([
+                      '',
+                      list([
+                        dict({
+                          'Fn::GetAtt': list([
+                            'SampleMyFunction85FD4A3A',
+                            'Arn',
+                          ]),
+                        }),
+                        ':*',
+                      ]),
+                    ]),
+                  }),
+                ]),
+              }),
+            ]),
+            'Version': '2012-10-17',
+          }),
+          'PolicyName': 'SampleStateMachineRoleDefaultPolicy3AE2E171',
+          'Roles': list([
+            dict({
+              'Ref': 'SampleStateMachineRole11C257FB',
+            }),
+          ]),
+        }),
+        'Type': 'AWS::IAM::Policy',
+      }),
+    }),
+    'Rules': dict({
+      'CheckBootstrapVersion': dict({
+        'Assertions': list([
+          dict({
+            'Assert': dict({
+              'Fn::Not': list([
+                dict({
+                  'Fn::Contains': list([
+                    list([
+                      '1',
+                      '2',
+                      '3',
+                      '4',
+                      '5',
+                    ]),
+                    dict({
+                      'Ref': 'BootstrapVersion',
+                    }),
+                  ]),
+                }),
+              ]),
+            }),
+            'AssertDescription': "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+          }),
+        ]),
+      }),
+    }),
+  })
+# ---

@@ -26,3 +26,14 @@ cdk deploy Stack1 Stack2
 # all stacks
 cdk deploy "*"    
 ```
+
+## Test
+
+```bash
+# initial or update snapshot. Create a snapshot using syrup .
+pytest --snapshot-update
+# verify no changes..
+pytest
+# diff in new resource with details.
+pytest -vv
+```
